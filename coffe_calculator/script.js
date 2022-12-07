@@ -11,12 +11,8 @@ class Calculator{
   }
 
   compute_coffee(cups){
-    let coffee_final
-    const ratio = this.ratio
     const water_final = cups*180
-    //const water_amount = parseFloat(cups) 
-    coffee_final = Math.round(water_final/ratio)
-    this.coffee_final = coffee_final  
+    this.coffee_final = Math.round(water_final/this.ratio)  
     this.water_final = water_final
   }
   
@@ -86,17 +82,29 @@ const waterOutputTextElement = document.querySelector('[data-water-output]')
 
 const calculator = new Calculator(waterOutputTextElement,coffeeOutputTextElemnt)
 
+var powerinput = undefined
+  powerButtons.forEach(button => {
+    button.addEventListener('click',() => {
+     powerinput = button.innerText}
+  )});
+  var cupsinput = undefined
+  cupsButtons.forEach(button => {
+    button.addEventListener('click',() => {
+    cupsinput = button.innerText}
+  )});
+
 
 
 kindButtons.forEach(button =>{
   button.addEventListener('click',() => {
-    kind = button.innerText
-    calculator.cofe_machin_choser("X","Mokka-P")
-    calculator.compute_coffee("1")
+    calculator.cofe_machin_choser(powerinput,button.innerText)
+    calculator.compute_coffee(cupsinput)
     calculator.update_display()
+    console.log(powerinput)
   })
 })
 
-cupsButtons.forEach(button =>{
-  button.addEventListener('click',() => {
-  })})
+// cupsButtons.forEach(button =>{
+//   button.addEventListener('click',() => {
+//     calculator.compute_coffee(button.innerText)
+//   })})
